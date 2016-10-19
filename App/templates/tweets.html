@@ -47,7 +47,7 @@
 
       <div class="jumbotron">
         <h1>Tweets</h1>
-	{% for tweet in tweepy.Cursor(tweets).items(10): %}
+	{% for tweet in tweets.items(10): %}
 
 	<div><p>{{tweet.text}}</p></div>
 {% endfor %}
