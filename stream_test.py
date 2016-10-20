@@ -3,6 +3,7 @@ import tweepy
 from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy.streaming import StreamListener
+import simplejson as json
  
 CONSUMER_TOKEN='UubTIUOSDbsaETbSm4UdYk3mk'
 CONSUMER_SECRET='f1RgFT5UaqhxQYiYr4aoCTppNMIwJpE0zMSWkPzsu8N7bIGjnM'
@@ -28,13 +29,19 @@ class MyListener(StreamListener):
 
 
 if __name__ == '__main__':
-	auth = OAuthHandler(CONSUMER_TOKEN, CONSUMER_SECRET)
-	auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+    auth = OAuthHandler(CONSUMER_TOKEN, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
  
-	api = tweepy.API(auth)
+    api = tweepy.API(auth)
 
-	twitter_stream = Stream(auth, MyListener())
-	twitter_stream.filter(track=['#python'])
+#	twitter_stream = Stream(auth, MyListener())
+#	twitter_stream.filter(track=['#trump'])
+
+#    trends = api.trends_available()
+#   print(trends)
+#    with open('data.json', 'a') as outfile:
+#        json.dump(trends, outfile)
+    print(api.me())
 
 
 #config
